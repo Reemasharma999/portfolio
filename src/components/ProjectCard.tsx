@@ -23,7 +23,7 @@ export default function ProjectCard({
   const { label, badge } = typeStyles[project.type];
 
   return (
-    <FadeIn delay={index * 0.1}>
+    <FadeIn delay={index * 0.12}>
       <article className="group flex h-full flex-col rounded-xl2 border border-border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover sm:p-10">
         <span
           className={`mb-5 inline-flex w-fit items-center rounded-full border-[3px] border-[#1a1a1a] px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.5px] shadow-[3px_3px_0px_#1a1a1a] ${badge}`}

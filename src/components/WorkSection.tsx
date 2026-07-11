@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import Sidebar, { type Section } from "./Sidebar";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
@@ -13,6 +13,8 @@ const caseStudies = projects.filter((p) => p.type === "case-study");
 
 export default function WorkSection() {
   const [active, setActive] = useState<Section>("product-teardowns");
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.2, once: true });
 
   const activeProjects =
     active === "product-teardowns"
@@ -22,20 +24,19 @@ export default function WorkSection() {
         : [];
 
   return (
-    <section
-      id="work"
-      className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32 lg:px-16"
-    >
-      <FadeIn>
-        <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          Selected Work
-        </h2>
-      </FadeIn>
+    <section id="work" ref={sectionRef} className="py-24 sm:py-32">
+      <div className="mx-auto max-w-content px-6 sm:px-10 lg:px-16">
+        <FadeIn>
+          <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            Selected Work
+          </h2>
+        </FadeIn>
+      </div>
 
-      <div className="mt-14 md:flex">
-        <Sidebar active={active} onSelect={setActive} />
+      <div className="mt-14 w-full md:flex md:items-stretch">
+        <Sidebar active={active} onSelect={setActive} triggered={isInView} />
 
-        <div className="mt-8 min-w-0 flex-1 md:mt-0 md:pl-10">
+        <div className="min-w-0 flex-1 px-[28px] py-[24px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
