@@ -2,14 +2,19 @@ import { Project } from "@/data/projects";
 import Button from "./Button";
 import FadeIn from "./FadeIn";
 
-const typeStyles: Record<Project["type"], { label: string; badge: string }> = {
+const typeStyles: Record<
+  Project["type"],
+  { label: string; badge: string; tag: string }
+> = {
   "case-study": {
     label: "Case Study",
-    badge: "bg-accent-soft text-accent-text",
+    badge: "bg-[#e9e3f5] text-[#3d2f5c]",
+    tag: "bg-[#e9e3f5] text-[#3d2f5c]",
   },
   teardown: {
     label: "Teardown",
-    badge: "bg-clay-soft text-clay-text",
+    badge: "bg-[#fde8e0] text-[#8a3d20]",
+    tag: "bg-[#fde8e0] text-[#8a3d20]",
   },
 };
 
@@ -20,13 +25,13 @@ export default function ProjectCard({
   project: Project;
   index: number;
 }) {
-  const { label, badge } = typeStyles[project.type];
+  const { label, badge, tag } = typeStyles[project.type];
 
   return (
     <FadeIn delay={index * 0.08}>
       <article className="group flex h-full flex-col rounded-xl2 border border-border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover sm:p-10">
         <span
-          className={`mb-5 inline-flex w-fit items-center rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide ${badge}`}
+          className={`mb-5 inline-flex w-fit items-center rounded-full border-[3px] border-[#1a1a1a] px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.5px] shadow-[3px_3px_0px_#1a1a1a] ${badge}`}
         >
           {label}
         </span>
@@ -47,12 +52,12 @@ export default function ProjectCard({
         </blockquote>
 
         <div className="mt-6 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+          {project.tags.map((tagLabel) => (
             <span
-              key={tag}
-              className="rounded-full bg-background px-3 py-1 text-xs font-medium text-muted ring-1 ring-inset ring-border"
+              key={tagLabel}
+              className={`rounded-full border-[3px] border-[#1a1a1a] px-2.5 py-1 text-xs font-medium shadow-[4px_4px_0px_#1a1a1a] ${tag}`}
             >
-              {tag}
+              {tagLabel}
             </span>
           ))}
         </div>
