@@ -27,7 +27,7 @@ export default function WorkSection() {
     <section id="work" ref={sectionRef} className="py-24 sm:py-32">
       <div className="mx-auto max-w-content px-6 sm:px-10 lg:px-16">
         <FadeIn>
-          <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="text-balance text-center text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Selected Work
           </h2>
         </FadeIn>
