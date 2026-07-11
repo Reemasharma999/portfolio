@@ -2,19 +2,14 @@ import { Project } from "@/data/projects";
 import Button from "./Button";
 import FadeIn from "./FadeIn";
 
-const typeStyles: Record<
-  Project["type"],
-  { label: string; badge: string; tag: string }
-> = {
+const typeStyles: Record<Project["type"], { label: string; badge: string }> = {
   "case-study": {
     label: "Case Study",
     badge: "bg-[#e9e3f5] text-[#3d2f5c]",
-    tag: "bg-[#e9e3f5] text-[#3d2f5c]",
   },
   teardown: {
     label: "Teardown",
     badge: "bg-[#fde8e0] text-[#8a3d20]",
-    tag: "bg-[#fde8e0] text-[#8a3d20]",
   },
 };
 
@@ -25,10 +20,10 @@ export default function ProjectCard({
   project: Project;
   index: number;
 }) {
-  const { label, badge, tag } = typeStyles[project.type];
+  const { label, badge } = typeStyles[project.type];
 
   return (
-    <FadeIn delay={index * 0.08}>
+    <FadeIn delay={index * 0.1}>
       <article className="group flex h-full flex-col rounded-xl2 border border-border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover sm:p-10">
         <span
           className={`mb-5 inline-flex w-fit items-center rounded-full border-[3px] border-[#1a1a1a] px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.5px] shadow-[3px_3px_0px_#1a1a1a] ${badge}`}
@@ -55,7 +50,7 @@ export default function ProjectCard({
           {project.tags.map((tagLabel) => (
             <span
               key={tagLabel}
-              className={`rounded-full border-[3px] border-[#1a1a1a] px-2.5 py-1 text-xs font-medium shadow-[4px_4px_0px_#1a1a1a] ${tag}`}
+              className="rounded-full border border-[#e5e2dc] bg-[#faf9f7] px-2.5 py-1 text-[11px] font-medium text-[#57534e]"
             >
               {tagLabel}
             </span>
