@@ -1,16 +1,9 @@
 import { Project } from "@/data/projects";
-import Button from "./Button";
 import FadeIn from "./FadeIn";
 
-const typeStyles: Record<Project["type"], { label: string; badge: string }> = {
-  "case-study": {
-    label: "Case Study",
-    badge: "bg-[#e9e3f5] text-[#3d2f5c]",
-  },
-  teardown: {
-    label: "Teardown",
-    badge: "bg-[#fde8e0] text-[#8a3d20]",
-  },
+const badgeStyles: Record<Project["badge"], string> = {
+  TEARDOWN: "bg-nb-peach",
+  "CASE STUDY": "bg-nb-lavender",
 };
 
 export default function ProjectCard({
@@ -20,49 +13,62 @@ export default function ProjectCard({
   project: Project;
   index: number;
 }) {
-  const { label, badge } = typeStyles[project.type];
-
   return (
-    <FadeIn delay={index * 0.12}>
-      <article className="group flex h-full flex-col rounded-xl2 border border-border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover sm:p-10">
-        <span
-          className={`mb-5 inline-flex w-fit items-center rounded-full border-[3px] border-[#1a1a1a] px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.5px] shadow-[3px_3px_0px_#1a1a1a] ${badge}`}
+    <FadeIn delay={index * 0.1} y={20}>
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex h-full flex-col overflow-hidden rounded-card border-[2.5px] border-ink bg-white shadow-nb transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-nbSm"
+      >
+        <div
+          className="relative flex h-[100px] items-center justify-center border-b-[3px] border-ink"
+          style={{
+            background: `linear-gradient(135deg, ${project.gradient[0]}, ${project.gradient[1]})`,
+          }}
         >
-          {label}
-        </span>
+          <span
+            className={`absolute left-2 top-2 rounded-full border-2 border-ink px-2 py-1 text-[9px] font-bold uppercase shadow-nbBadge ${badgeStyles[project.badge]}`}
+          >
+            {project.badge}
+          </span>
+          <span className="text-3xl">{project.emoji}</span>
+        </div>
 
-        <h3 className="text-2xl font-bold leading-snug text-foreground sm:text-[1.65rem]">
-          {project.title}
-        </h3>
-        <p className="mt-2 text-[15px] font-medium text-muted">
-          {project.subtitle}
-        </p>
-
-        <p className="mt-5 leading-relaxed text-foreground/80">
-          {project.description}
-        </p>
-
-        <blockquote className="mt-6 border-l-2 border-accent/40 pl-4 italic leading-relaxed text-foreground/90">
-          &ldquo;{project.keyInsight}&rdquo;
-        </blockquote>
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          {project.tags.map((tagLabel) => (
-            <span
-              key={tagLabel}
-              className="rounded-full border border-[#e5e2dc] bg-[#faf9f7] px-2.5 py-1 text-[11px] font-medium text-[#57534e]"
-            >
-              {tagLabel}
+        <div className="flex flex-1 flex-col p-4">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="font-heading text-sm font-bold leading-snug text-ink">
+              {project.title}
+            </h3>
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[6px] border-2 border-ink text-xs transition-colors duration-150 group-hover:bg-ink group-hover:text-white">
+              ↗
             </span>
-          ))}
+          </div>
+
+          <p className="mt-2 text-[11px] leading-relaxed text-[#8a8580]">
+            {project.description}
+          </p>
+
+          <p className="mt-3 border-l-[3px] border-nb-pink pl-2 text-[11px] italic leading-relaxed text-[#6b6560]">
+            &ldquo;{project.keyInsight}&rdquo;
+          </p>
+
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border-[1.5px] border-[#d4cfc8] bg-[#faf6ef] px-2 py-1 text-[9px] text-[#6b6560]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-8 pt-2">
-          <Button href={project.link} external>
-            {project.linkLabel}
-          </Button>
+        <div className="border-t-2 border-ink px-3.5 py-2.5 text-[11px] font-extrabold uppercase transition-colors duration-150 group-hover:bg-nb-peach">
+          {project.actionLabel}
         </div>
-      </article>
+      </a>
     </FadeIn>
   );
 }

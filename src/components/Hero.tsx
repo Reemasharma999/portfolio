@@ -1,24 +1,26 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import Button from "./Button";
 
 const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
   },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 };
+
+const RESUME_LINK =
+  "https://drive.google.com/file/d/1hs5p7w-qouLY_tvKiJtTAR2qpQqNuqka/view?usp=drivesdk";
 
 export default function Hero() {
   const scrollToWork = () => {
@@ -26,61 +28,84 @@ export default function Hero() {
   };
 
   return (
-    <section className="mx-auto flex min-h-[88vh] max-w-content flex-col justify-center px-6 pt-28 pb-20 sm:px-10 lg:px-16">
-      <motion.div variants={container} initial="hidden" animate="show">
-        <motion.p
+    <section
+      id="hero"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-20 pt-32 text-center"
+    >
+      <motion.span
+        aria-hidden
+        className="absolute right-[8%] top-[14%] select-none text-4xl"
+        animate={{ y: [0, -14, 0], rotate: [0, 12, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        ✨
+      </motion.span>
+      <motion.span
+        aria-hidden
+        className="absolute bottom-[12%] left-[8%] select-none text-4xl"
+        animate={{ y: [0, 14, 0], rotate: [0, -10, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      >
+        💡
+      </motion.span>
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 flex max-w-2xl flex-col items-center"
+      >
+        <motion.span
           variants={item}
-          className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-accent"
+          className="mb-6 inline-flex items-center rounded-full border-2 border-ink bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[2px] shadow-nbSm"
         >
-          Product Manager
-        </motion.p>
+          Product Manager — AI &amp; Growth
+        </motion.span>
 
         <motion.h1
           variants={item}
-          className="text-balance text-5xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+          className="font-heading text-[32px] font-extrabold leading-tight text-ink sm:text-[42px]"
         >
-          Reema Sharma
+          <span className="block">I ship products,</span>
+          <span className="block">
+            <span className="inline-block -rotate-1 bg-nb-blue px-2">
+              tear them apart,
+            </span>
+          </span>
+          <span className="block">
+            <span className="inline-block rotate-1 bg-nb-pink px-2">
+              and build smarter.
+            </span>
+          </span>
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="mt-5 text-xl font-medium text-muted sm:text-2xl"
+          className="mx-auto mt-6 max-w-[480px] text-sm leading-relaxed text-[#6b6560]"
         >
-          Product Manager — AI &amp; Growth Products
-        </motion.p>
-
-        <motion.p
-          variants={item}
-          className="mt-7 max-w-2xl text-balance text-lg leading-relaxed text-muted"
-        >
-          Product Manager with 4 years at HashedIn by Deloitte. I combine 3
-          years of product strategy with a software engineering foundation to
-          build AI-native products. I believe the best PMs don&apos;t just
-          ship — they understand why products work.
+          PM at HashedIn by Deloitte with an engineering backbone. I combine
+          product strategy, user research, and AI to build things people
+          actually use.
         </motion.p>
 
         <motion.div
           variants={item}
-          className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5"
+          className="mt-8 flex flex-wrap items-center justify-center gap-4"
         >
-          <Button href="#work" onClick={scrollToWork}>
-            View My Work
-          </Button>
+          <button
+            onClick={scrollToWork}
+            className="rounded-full border-[3px] border-ink bg-nb-pink px-6 py-3 text-sm font-extrabold uppercase tracking-wide shadow-nbBtn transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-nbBtnSm"
+          >
+            Explore My Work ↓
+          </button>
 
           <a
-            href="https://www.linkedin.com/in/reemasharma123"
+            href={RESUME_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[15px] font-medium text-foreground underline decoration-border decoration-2 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            className="rounded-full border-[3px] border-ink bg-white px-6 py-3 text-sm font-extrabold uppercase tracking-wide shadow-nbBtn transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-nbBtnSm"
           >
-            LinkedIn
-          </a>
-
-          <a
-            href="mailto:sharmarims123@gmail.com"
-            className="text-[15px] font-medium text-foreground underline decoration-border decoration-2 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-          >
-            Email
+            Download Resume
           </a>
         </motion.div>
       </motion.div>

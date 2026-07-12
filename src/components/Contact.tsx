@@ -1,33 +1,23 @@
-import Button from "./Button";
 import FadeIn from "./FadeIn";
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32 lg:px-16"
-    >
-      <FadeIn className="flex flex-col items-start rounded-xl2 border border-border bg-card px-8 py-16 shadow-card sm:items-center sm:px-16 sm:text-center">
-        <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          Let&apos;s connect.
+    <section id="contact" className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
+      <FadeIn className="mx-auto max-w-content rounded-cta border-[3px] border-ink bg-nb-blue px-8 py-14 text-center shadow-nbLg sm:px-14">
+        <h2 className="font-heading text-2xl font-bold text-ink sm:text-[28px]">
+          Let&apos;s build something cool together 🤝
         </h2>
-        <p className="mt-4 max-w-lg text-lg leading-relaxed text-muted">
-          Open to conversations about AI-native products, growth, and
-          building things that work.
+        <p className="mx-auto mt-3 max-w-lg text-xs leading-relaxed text-[#3a5a70] sm:text-sm">
+          Open to PM roles, product collabs, and interesting problems worth
+          solving.
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-5 sm:justify-center">
-          <Button href="mailto:sharmarims123@gmail.com">Get in Touch</Button>
-
-          <a
-            href="https://www.linkedin.com/in/reemasharma123"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[15px] font-medium text-foreground underline decoration-border decoration-2 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-          >
-            LinkedIn
-          </a>
-        </div>
+        <a
+          href="mailto:sharmarims123@gmail.com"
+          className="mt-8 inline-flex items-center justify-center rounded-full border-[3px] border-ink bg-white px-6 py-3 text-sm font-extrabold uppercase tracking-wide shadow-nbBtn transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-nbBtnSm"
+        >
+          Send a Message ↗
+        </a>
       </FadeIn>
     </section>
   );

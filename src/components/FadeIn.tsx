@@ -13,7 +13,7 @@ interface FadeInProps {
 export default function FadeIn({
   children,
   delay = 0,
-  y = 24,
+  y = 20,
   className,
 }: FadeInProps) {
   return (
