@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import HeroProductAnimation from "./HeroProductAnimation";
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -48,6 +49,8 @@ export default function Hero() {
       >
         💡
       </motion.span>
+
+      <HeroProductAnimation />
 
       <motion.div
         variants={container}

@@ -1,16 +1,9 @@
 import { Project } from "@/data/projects";
 import FadeIn from "./FadeIn";
-import { CarIllustration, GearIllustration, PhoneIllustration } from "./CardIllustrations";
 
 const badgeStyles: Record<Project["badge"], string> = {
   TEARDOWN: "bg-nb-peach",
   "CASE STUDY": "bg-nb-lavender",
-};
-
-const illustrations: Record<string, () => JSX.Element> = {
-  "uber-surge-pricing-teardown": CarIllustration,
-  "make-com-onboarding-teardown": GearIllustration,
-  "instagram-reels-ux-case-study": PhoneIllustration,
 };
 
 export default function ProjectCard({
@@ -20,8 +13,6 @@ export default function ProjectCard({
   project: Project;
   index: number;
 }) {
-  const Illustration = illustrations[project.id];
-
   return (
     <FadeIn delay={index * 0.1} y={20}>
       <a
@@ -41,7 +32,7 @@ export default function ProjectCard({
           >
             {project.badge}
           </span>
-          {Illustration && <Illustration />}
+          <span className="text-4xl">{project.emoji}</span>
         </div>
 
         <div className="flex flex-1 flex-col p-4">
