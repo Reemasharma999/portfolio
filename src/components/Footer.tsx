@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="border-t-[2.5px] border-ink px-6 py-6 sm:px-10 lg:px-16">
       <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-4 sm:flex-row">
-        <span className="font-hand text-xl font-bold text-ink">✦ reema</span>
+        <div aria-hidden />
 
         <span className="text-[11px] text-[#8a8580]">Reema Sharma</span>
 

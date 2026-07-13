@@ -32,7 +32,7 @@ export default function ProjectCard({
           >
             {project.badge}
           </span>
-          <span className="text-3xl">{project.emoji}</span>
+          <span className="text-4xl">{project.emoji}</span>
         </div>
 
         <div className="flex flex-1 flex-col p-4">

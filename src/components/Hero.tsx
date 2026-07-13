@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import HeroProductAnimation from "./HeroProductAnimation";
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -49,12 +50,22 @@ export default function Hero() {
         💡
       </motion.span>
 
+      <HeroProductAnimation />
+
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
         className="relative z-10 flex max-w-2xl flex-col items-center"
       >
+        <motion.p
+          variants={item}
+          className="mb-2 font-heading text-base font-bold text-ink"
+          style={{ letterSpacing: "1px" }}
+        >
+          Reema Sharma
+        </motion.p>
+
         <motion.span
           variants={item}
           className="mb-6 inline-flex items-center rounded-full border-2 border-ink bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[2px] shadow-nbSm"
